@@ -1,0 +1,35 @@
+{
+  "name": "histoire-example-nuxt3",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@8.10.5",
+  "scripts": {
+    "dev": "pnpm run story:dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview --port 4567",
+    "ci": "start-server-and-test story:preview http://localhost:4567/ test",
+    "postinstall": "nuxi prepare",
+    "test": "cypress run",
+    "test:dev": "cypress open --config baseUrl=http://localhost:6006",
+    "test:examples": "pnpm run story:build && pnpm run ci",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^1.2.0",
+    "@histoire/plugin-nuxt": "^0.17.5",
+    "@histoire/plugin-vue": "^0.17.5",
+    "@nuxtjs/tailwindcss": "^6.9.5",
+    "cypress": "^13.5.1",
+    "cypress-vite": "^1.4.2",
+    "eslint": "^8.53.0",
+    "histoire": "^0.17.5",
+    "nuxt": "^3.8.1",
+    "start-server-and-test": "^2.0.3",
+    "typescript": "^5.2.2",
+    "vue": "^3.3.8"
+  }
+}
