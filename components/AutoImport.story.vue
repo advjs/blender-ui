@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import consola from 'consola'
+
 const config = useRuntimeConfig()
-console.log('useRuntimeConfig', config)
+consola.log('useRuntimeConfig', config)
 </script>
 
 <template>
@@ -8,7 +10,7 @@ console.log('useRuntimeConfig', config)
     <Meow />
 
     <h3>Nuxt runtime config</h3>
-    <pre>{{ config }}</pre>
+    <pre class="text-white">{{ config }}</pre>
     <p data-testid="config">
       {{ config.public.configFromNuxt }}
     </p>

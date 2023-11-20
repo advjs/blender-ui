@@ -1,42 +1,22 @@
-# Nuxt 3 Minimal Starter
+# blender-ui
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+> Blender Style UI Components for Web based on Vue. Preview by [histoire](https://histoire.dev/).
 
-## Setup
+**Work in progress...**
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
+## Usage
 
 ```bash
-npm run dev
+# not published yet
+pnpm add @advjs/blender-ui
 ```
 
-## Production
+## Why?
 
-Build the application for production:
+- I'm developing editors for some projects ([advjs](https://github.com/YunYouJun/advjs) and others), I hope their UI to be refined and uniform.
+- Blender is a great 3D software, its UI is also great and fits well with editors.
 
-```bash
-npm run build
-```
+## Ref
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+- [User Interface | Blender](https://docs.blender.org/manual/en/latest/interface/index.html)
+- [bfanger/pixi-inspector](https://github.com/bfanger/pixi-inspector/tree/main/packages/blender-elements)
