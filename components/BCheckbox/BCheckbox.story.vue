@@ -13,7 +13,7 @@ const disabledChecked = ref(true)
     }"
   >
     <Variant
-      title="Common Checkbox"
+      title="Checkbox"
     >
       <BCheckbox v-model="value">
         Unchecked

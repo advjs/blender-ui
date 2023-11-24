@@ -2,7 +2,7 @@
 withDefaults(defineProps<{
   modelValue: boolean
   hint?: string
-  disabled: boolean
+  disabled?: boolean
 }>(), {
   value: false,
   hint: '',
@@ -22,7 +22,7 @@ function onChange(e: Event) {
 </script>
 
 <template>
-  <label class="checkbox" :title="hint">
+  <label class="b-checkbox" :title="hint">
     <input
       :value="modelValue"
       :checked="modelValue"
@@ -39,7 +39,7 @@ function onChange(e: Event) {
 </template>
 
 <style lang="scss">
-.checkbox {
+.b-checkbox {
   display: flex;
   gap: 2px;
   color: white;
@@ -49,39 +49,40 @@ function onChange(e: Event) {
     12px system-ui,
     sans-serif;
   cursor: pointer;
-}
-.input {
-  outline: none;
-  appearance: none;
-  background: #545454;
-  border: 1px solid #3d3d3d;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(black, 0.2);
-  width: 14px;
-  height: 14px;
-  margin: 0;
 
-  &:hover {
-    background: #656565;
-    border-color: #464646;
-  }
-  &:checked {
-    background: #4772b3 var(--icon-checkbox) no-repeat center center;
-  }
-  &:focus-visible {
-    border-color: #4772b3;
-    &:checked {
-      border-color: white;
-    }
-  }
+  .input {
+    outline: none;
+    appearance: none;
+    background: #545454;
+    border: 1px solid #3d3d3d;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(black, 0.2);
+    width: 14px;
+    height: 14px;
+    margin: 0;
 
-  &:disabled {
     &:hover {
-      background: #545454;
-      border-color: #3d3d3d;
+      background: #656565;
+      border-color: #464646;
     }
     &:checked {
-      background: #545454 var(--icon-checkbox) no-repeat center center;
+      background: #4772b3 var(--icon-checkbox) no-repeat center center;
+    }
+    &:focus-visible {
+      border-color: #4772b3;
+      &:checked {
+        border-color: white;
+      }
+    }
+
+    &:disabled {
+      &:hover {
+        background: #545454;
+        border-color: #3d3d3d;
+      }
+      &:checked {
+        background: #545454 var(--icon-checkbox) no-repeat center center;
+      }
     }
   }
 }
