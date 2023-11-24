@@ -119,10 +119,7 @@ function onUp() {
 }
 
 const vNumberDrag = numberDrag({
-  value: props.modelValue,
-  step: props.step,
-  min: props.min,
-  max: props.max,
+  props,
   onChange,
   onClick,
   onDown,

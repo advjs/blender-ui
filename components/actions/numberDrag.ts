@@ -3,10 +3,12 @@ import type { Directive } from 'vue'
 let pointerLockSupported = true
 
 export interface Config {
-  value?: number
-  step?: number
-  min?: number
-  max?: number
+  props: {
+    modelValue: number
+    step?: number
+    min?: number
+    max?: number
+  }
   onChange: (value: number) => void
   onClick?: (e: MouseEvent) => void
   onDown?: (e: MouseEvent) => void
@@ -23,15 +25,17 @@ export default function numberDrag(config: Config): Directive {
     }
     | undefined
 
+  const { props } = config
+
   function onMousedown(e: MouseEvent) {
-    if (!config.step)
+    if (!props.step)
       return
 
     config.onDown?.(e)
-    if (typeof config.value === 'number') {
+    if (typeof props.modelValue === 'number') {
       started = {
         moved: 0,
-        value: config.value,
+        value: props.modelValue,
         ts: Date.now(),
       }
       document.addEventListener('mousemove', onMousemove)
@@ -56,10 +60,7 @@ export default function numberDrag(config: Config): Directive {
   }
 
   function onMousemove(e: MouseEvent) {
-    console.log('onMousemove')
-    console.log(config)
-    console.log(config.value)
-    if (!started || !config.step)
+    if (!started || !props.step)
       return
 
     if (started.moved === 0) {
@@ -70,19 +71,19 @@ export default function numberDrag(config: Config): Directive {
       started.moved += e.movementX
     }
 
-    const mouseStep = e.shiftKey ? config.step / 20 : config.step / 2
+    const mouseStep = e.shiftKey ? props.step / 20 : props.step / 2
     const offset = started.moved * mouseStep
     let value = started.value + offset
     if (e.ctrlKey) {
-      const rest = value % (config.step * (e.shiftKey ? 1 : 10))
+      const rest = value % (props.step * (e.shiftKey ? 1 : 10))
       value -= rest
     }
 
-    if (typeof config.min === 'number' && value < config.min)
-      value = config.min
+    if (typeof props.min === 'number' && value < props.min)
+      value = props.min
 
-    if (typeof config.max === 'number' && value > config.max)
-      value = config.max
+    if (typeof props.max === 'number' && value > props.max)
+      value = props.max
 
     config.onChange(value)
   }

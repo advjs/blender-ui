@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 
 import Option from './BSelectOption.vue'
 
@@ -28,7 +28,6 @@ let timer: number | undefined
 
 // 选择选项的逻辑
 function select(next: OptionType) {
-  console.log('select', next)
   const newValue = typeof next === 'string' ? next : next.value
   emit('change', newValue)
   emit('update:modelValue', newValue)
