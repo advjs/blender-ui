@@ -1,6 +1,8 @@
+import type { Directive } from 'vue'
+
 let pointerLockSupported = true
 
-interface Config {
+export interface Config {
   value?: number
   step?: number
   min?: number
@@ -10,7 +12,9 @@ interface Config {
   onDown?: (e: MouseEvent) => void
   onUp?: (e: MouseEvent) => void
 }
-export default function numberDrag(el: HTMLElement, config: Config) {
+
+export default function numberDrag(config: Config): Directive {
+  const elRef = ref<HTMLElement>()
   let started:
     | {
       moved: number
@@ -31,8 +35,8 @@ export default function numberDrag(el: HTMLElement, config: Config) {
         ts: Date.now(),
       }
       document.addEventListener('mousemove', onMousemove)
-      if (e.target === el)
-        requestPointerLock(el)
+      if (e.target === elRef.value)
+        requestPointerLock(elRef.value)
     }
   }
 
@@ -52,6 +56,9 @@ export default function numberDrag(el: HTMLElement, config: Config) {
   }
 
   function onMousemove(e: MouseEvent) {
+    console.log('onMousemove')
+    console.log(config)
+    console.log(config.value)
     if (!started || !config.step)
       return
 
@@ -80,13 +87,13 @@ export default function numberDrag(el: HTMLElement, config: Config) {
     config.onChange(value)
   }
 
-  el.addEventListener('mousedown', onMousedown)
-  document.addEventListener('mouseup', onMouseup)
   return {
-    update(next: Config) {
-      config = next
+    mounted: (el) => {
+      elRef.value = el
+      el.addEventListener('mousedown', onMousedown)
+      document.addEventListener('mouseup', onMouseup)
     },
-    destroy() {
+    unmounted(el) {
       el.removeEventListener('mousedown', onMousedown)
       document.removeEventListener('mouseup', onMouseup)
       document.removeEventListener('mousemove', onMousemove)
