@@ -1,0 +1,17 @@
+{
+  "name": "blender-ui",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.11.0",
+  "exports": {
+    ".": {
+      "import": "./dist/blender-ui.js",
+      "require": "./dist/blender-ui.umd.cjs"
+    }
+  },
+  "main": "./dist/blender-ui.umd.cjs",
+  "module": "./dist/blender-ui.js",
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build"
+  }
+}

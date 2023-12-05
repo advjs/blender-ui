@@ -8,4 +8,11 @@ export default defineNuxtConfig({
       configFromNuxt: 'test',
     },
   },
+
+  components: [
+    {
+      path: '~/src/components',
+      pathPrefix: false,
+    },
+  ],
 })

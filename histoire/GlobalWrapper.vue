@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { css } from '../components/icons'
+import { css } from '../lib/components/icons'
 
 const globalCSSVars = css()
 </script>
