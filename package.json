@@ -1,9 +1,9 @@
 {
-  "name": "histoire-example-nuxt3",
+  "name": "blender-ui",
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.11.0",
   "scripts": {
     "build": "pnpm run story:build",
     "dev": "pnpm run story:dev",
@@ -20,20 +20,20 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^1.2.0",
-    "@histoire/plugin-nuxt": "^0.17.5",
-    "@histoire/plugin-vue": "^0.17.5",
-    "@nuxtjs/tailwindcss": "^6.9.5",
+    "@antfu/eslint-config": "^2.3.3",
+    "@histoire/plugin-nuxt": "^0.17.7",
+    "@histoire/plugin-vue": "^0.17.6",
+    "@nuxtjs/tailwindcss": "^6.10.1",
     "consola": "^3.2.3",
-    "cypress": "^13.5.1",
-    "cypress-vite": "^1.4.2",
-    "eslint": "^8.53.0",
-    "histoire": "^0.17.5",
-    "nuxt": "^3.8.1",
+    "cypress": "^13.6.0",
+    "cypress-vite": "^1.5.0",
+    "eslint": "^8.55.0",
+    "histoire": "^0.17.6",
+    "nuxt": "^3.8.2",
     "sass": "^1.69.5",
     "start-server-and-test": "^2.0.3",
-    "typescript": "^5.2.2",
-    "vue": "^3.3.8",
-    "vue-tsc": "^1.8.22"
+    "typescript": "^5.3.2",
+    "vue": "^3.3.10",
+    "vue-tsc": "^1.8.24"
   }
 }

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 
-import blurOnEnter from '../actions/blurOnEnter'
 import numberDrag from '../actions/numberDrag'
-import revertOnEscape from '../actions/revertOnEscape'
 
 // Props
 const props = withDefaults(defineProps<{
