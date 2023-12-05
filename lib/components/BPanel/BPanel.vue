@@ -58,7 +58,7 @@ function afterLeave(el: Element) {
 </script>
 
 <template>
-  <section class="b-panel panel rounded text-xs">
+  <section class="b-panel panel">
     <button
       class="title" :class="{ expanded }"
       @click="onToggleExpanded"
@@ -85,11 +85,18 @@ function afterLeave(el: Element) {
 
 <style lang="scss">
 .b-panel {
+  width: 100%;
+
+  font-size: 12px;
   color: #eee;
   background: #353535;
+  border-radius: 4px;
 
   .title {
     display: flex;
+    align-items: center;
+
+    font-size: inherit;
 
     gap: 4px;
     appearance: none;
@@ -107,7 +114,7 @@ function afterLeave(el: Element) {
     &:before {
       content: "";
       position: absolute;
-      top: 4px;
+      top: 3px;
       left: 3px;
       width: 16px;
       height: 16px;
@@ -125,6 +132,10 @@ function afterLeave(el: Element) {
 
     &.disabled {
       opacity: 0.5;
+    }
+
+    .p-2 {
+      padding: 8px;
     }
   }
 }

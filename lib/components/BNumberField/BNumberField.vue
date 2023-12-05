@@ -218,6 +218,12 @@ const vNumberDrag = numberDrag({
     right: 0;
     cursor: col-resize;
   }
+
+  &.active {
+    .arrow {
+      background-color: #222222;
+    }
+  }
   .arrow {
     position: absolute;
     background: none;
@@ -230,9 +236,6 @@ const vNumberDrag = numberDrag({
     display: none;
     cursor: pointer;
 
-    .active & {
-      background-color: #222222;
-    }
     :not(.focused, .active) &:hover {
       background-color: #797979;
     }

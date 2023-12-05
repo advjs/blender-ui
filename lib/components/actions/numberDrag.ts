@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import type { Directive } from 'vue'
 
 let pointerLockSupported = true

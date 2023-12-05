@@ -44,7 +44,6 @@
     "start-server-and-test": "^2.0.3",
     "terser": "^5.25.0",
     "typescript": "^5.3.2",
-    "vite": "^5.0.5",
     "vue": "^3.3.10",
     "vue-tsc": "^1.8.24"
   }
