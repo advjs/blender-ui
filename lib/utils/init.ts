@@ -36,11 +36,72 @@ export function init(selector = 'advjs-blender-ui-container') {
   return app
 }
 
+export interface PropertyOptions {
+  object: object
+  property: number | string | symbol
+  label?: string
+  type: string
+  min?: number
+  max?: number
+  step?: number
+  onChange?: (val: number) => void
+}
+
 export function createBUI(selector = 'advjs-blender-ui-container', props: any = {}) {
-  const app = createApp(App, {
-    // title: 'Blender UI',
-    ...props,
-  })
+  const app = createApp(App, props)
   app.mount(selector)
-  return app
+  return {
+    app,
+
+    add<K extends string | number | symbol>(obj: Record<K, number | string | object>, property: K, min?: number, max?: number, step?: number) {
+      const propertyOptions: PropertyOptions = {
+        object: obj,
+        property,
+        label: property.toString(),
+        type: typeof obj[property],
+        min,
+        max,
+        step,
+        // onChange: (val: number) => {
+        //   obj[property] = val
+        // },
+      }
+      props.panels[0].properties.push(propertyOptions)
+
+      function label(text: string) {
+        propertyOptions.label = text
+      }
+      return {
+        /**
+         * alias of name
+         */
+        label,
+        name: label,
+      }
+    },
+
+    addVector(obj: {
+      x: number
+      y: number
+      z: number
+    }) {
+      const x = this.add(obj, 'x')
+      const y = this.add(obj, 'y')
+      const z = this.add(obj, 'z')
+
+      function labels(arr: string[]) {
+        x.label(arr[0])
+        y.label(arr[1])
+        z.label(arr[2])
+      }
+
+      return {
+        /**
+         * alias of names
+         */
+        labels,
+        names: labels,
+      }
+    },
+  }
 }

@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<{
   suffix: '',
   location: 'ALONE',
   id: '',
+  step: 0.1,
 })
 
 const emit = defineEmits(['change', 'update:modelValue'])

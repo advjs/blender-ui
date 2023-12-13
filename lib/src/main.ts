@@ -11,37 +11,11 @@ const props = reactive({
   panels: [
     {
       title: 'Transform',
-      properties: [
-        {
-          label: 'Location X',
-          type: 'number',
-          value: camera.position.x,
-          step: 0.1,
-          onChange: (val) => {
-            camera.position.x = val
-          },
-        },
-        {
-          label: 'Y',
-          type: 'number',
-          value: camera.position.y,
-          step: 0.1,
-          onChange: (val) => {
-            camera.position.y = val
-          },
-        },
-        {
-          label: 'Z',
-          type: 'number',
-          value: camera.position.z,
-          step: 0.1,
-          onChange: (val) => {
-            camera.position.z = val
-          },
-        },
-      ],
+      properties: [],
     },
   ],
 })
 
 export const bui = createBUI('#advjs-blender-ui-container', props)
+bui.add(camera.position, 'x').label('Location X')
+bui.addVector(camera.position).labels(['X', 'Y', 'Z'])

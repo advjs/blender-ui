@@ -8,9 +8,10 @@ defineProps<{
   panels?: {
     title: string
     properties: {
+      object: Record<string, number>
+      property: string
       type?: string
       label: string
-      value: number
       step?: number
       onChange?: (val: number) => void
     }[]
@@ -51,10 +52,9 @@ const globalCSSVars = css()
           :label="property.label"
         >
           <BNumberField
-            v-if="property.type === 'number'"
-            :model-value="property.value"
+            v-if="property.object && typeof property.object[property.property] === 'number'"
+            v-model="property.object[property.property]"
             :step="property.step"
-            @update:model-value="(val) => property.value = val"
             @change="property.onChange"
           />
         </BProperty>
