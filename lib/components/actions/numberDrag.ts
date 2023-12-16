@@ -72,7 +72,7 @@ export default function numberDrag(config: Config): Directive {
       started.moved += e.movementX
     }
 
-    const mouseStep = e.shiftKey ? props.step / 20 : props.step / 2
+    const mouseStep = e.shiftKey ? props.step / 20 : props.step
     const offset = started.moved * mouseStep
     let value = started.value + offset
     if (e.ctrlKey) {

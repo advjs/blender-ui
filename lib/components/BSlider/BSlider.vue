@@ -5,16 +5,15 @@ import numberDrag from '../actions/numberDrag'
 
 // Props
 const props = withDefaults(defineProps<{
+  title?: string
   modelValue: number
   suffix?: string
-  location?: 'ALONE' | 'TOP' | 'MIDDLE' | 'BOTTOM'
   id?: string
   step?: number
   min?: number
   max?: number
 }>(), {
   suffix: '',
-  location: 'ALONE',
   id: '',
   step: 0.1,
 })
@@ -84,22 +83,6 @@ function onBlur() {
   text.value = format(wanted.value)
 }
 
-function onStepDown() {
-  if (props.step && typeof props.modelValue === 'number') {
-    const val = props.modelValue - props.step
-    emit('change', val)
-    emit('update:modelValue', val)
-  }
-}
-
-function onStepUp() {
-  if (props.step && typeof props.modelValue === 'number') {
-    const val = props.modelValue + props.step
-    emit('change', val)
-    emit('update:modelValue', val)
-  }
-}
-
 function onChange(next: number) {
   const val = next
   emit('change', val)
@@ -126,10 +109,30 @@ const vNumberDrag = numberDrag({
   onDown,
   onUp,
 })
+
+const progressWidth = computed(() => {
+  const min = props.min
+  const max = props.max
+  if (typeof min === 'undefined' || typeof max === 'undefined')
+    return 0
+
+  const value = props.modelValue
+
+  if (value <= min)
+    return `0%`
+
+  if (value >= max)
+    return `100%`
+
+  return `${((value - min) / (max - min)) * 100}%`
+})
 </script>
 
 <template>
-  <div class="b-number-field number-field" :class="{ active, focused }" :data-location="location" @click="onClick">
+  <div class="b-slider" :class="{ active, focused }">
+    <div v-if="!focused" class="title">
+      {{ title }}
+    </div>
     <input
       :id="id"
       ref="elRef"
@@ -145,17 +148,24 @@ const vNumberDrag = numberDrag({
       v-number-drag
       class="drag"
     >
-      <button class="arrow left" @click="onStepDown" />
-      <button class="arrow right" @click="onStepUp" />
+      <div
+        v-if="(typeof min !== 'undefined') && (typeof max !== 'undefined')"
+        class="progress-bar"
+        :style="{ width: progressWidth }"
+      />
     </div>
   </div>
 </template>
 
-<style  lang="scss">
- .b-number-field {
+<style lang="scss">
+ .b-slider {
   position: relative;
+  height: 18px;
+
   background: #545454;
   overflow: hidden;
+
+  border-radius: 2px;
 
   &:not(.focused, .active):hover {
     background: #656565;
@@ -165,33 +175,40 @@ const vNumberDrag = numberDrag({
     background-color: #222222;
   }
 
-  &[data-location="ALONE"] {
-    border-radius: 2px / 3px;
-  }
-  &[data-location="TOP"] {
-    border-top-left-radius: 2px 3px;
-    border-top-right-radius: 2px 3px;
-    margin-bottom: 1px;
-  }
-  &[data-location="MIDDLE"] {
-    margin-bottom: 1px;
-  }
-  &[data-location="BOTTOM"] {
-    border-bottom-left-radius: 2px 3px;
-    border-bottom-right-radius: 2px 3px;
-  }
+  .title {
+    z-index: 1;
 
-  &:hover {
-    .arrow {
-      display: block;
-    }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #e5e5e5;
+    font:
+      12px system-ui,
+      sans-serif;
+    text-shadow: 0 1px 2px rgba(black, 0.8);
+    pointer-events: none;
   }
 
   .input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+
     background-color: transparent;
     color: #e5e5e5;
     border: 0;
-    text-align: center;
+    text-align: right;
+
     outline: none;
     display: block;
     width: 100%;
@@ -201,10 +218,10 @@ const vNumberDrag = numberDrag({
       sans-serif;
     padding-top: 2px;
     padding-bottom: 2px;
+    padding-right: 4px;
     text-shadow: 0 1px 2px rgba(black, 0.8);
 
     :not(.focused, .active) &:hover {
-      background-color: #797979;
       color: #fcfcfc;
     }
     &:focus {
@@ -223,34 +240,15 @@ const vNumberDrag = numberDrag({
     cursor: col-resize;
   }
 
-  &.active {
-    .arrow {
-      background-color: #222222;
-    }
-  }
-  .arrow {
+  // Progress
+  .progress-bar {
+    z-index: 0;
     position: absolute;
-    background: none;
-    border: none;
-    color: white;
+    left: 0;
+
     top: 0;
     bottom: 0;
-    width: 13px;
-    background: #656565 no-repeat center center;
-    display: none;
-    cursor: pointer;
-
-    :not(.focused, .active) &:hover {
-      background-color: #797979;
-    }
-    &.left {
-      left: 0;
-      background-image: var(--icon-chevron-left);
-    }
-    &.right {
-      right: 0;
-      background-image: var(--icon-chevron-right);
-    }
+    background: var(--b-c-active);
   }
 }
 </style>
