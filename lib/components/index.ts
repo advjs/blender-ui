@@ -3,6 +3,7 @@ import BNumberField from './BNumberField/BNumberField.vue'
 import BPanel from './BPanel/BPanel.vue'
 import BProperty from './BProperty/BProperty.vue'
 import BSelectMenu from './BSelectMenu/BSelectMenu.vue'
+import BTree from './BTree/BTree.vue'
 
 export {
   BCheckbox,
@@ -10,4 +11,5 @@ export {
   BPanel,
   BProperty,
   BSelectMenu,
+  BTree,
 }
