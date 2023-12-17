@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import BPanel from './BPanel.vue'
+
 const expanded = ref(true)
 const curOption = ref('xyz')
 

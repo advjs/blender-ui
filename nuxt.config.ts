@@ -11,6 +11,10 @@ export default defineNuxtConfig({
 
   components: [
     {
+      path: '~/lib/components',
+      pathPrefix: false,
+    },
+    {
       path: '~/src/components',
       pathPrefix: false,
     },

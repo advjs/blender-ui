@@ -63,7 +63,7 @@ const data: Tree[] = [
 
 <template>
   <Story
-    title="BPanel"
+    title="BTree"
   >
     <BTree :data="data" />
   </Story>

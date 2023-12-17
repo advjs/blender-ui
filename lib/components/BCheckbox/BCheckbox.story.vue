@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import BCheckbox from './BCheckbox.vue'
+
 const value = ref(false)
 const checked = ref(true)
 const disabled = ref(false)

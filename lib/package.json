@@ -1,5 +1,5 @@
 {
-  "name": "blender-ui",
+  "name": "@advjs/blender-ui",
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@8.12.1",
@@ -8,10 +8,12 @@
     "url": "https://github.com/advjs/blender-ui"
   },
   "exports": {
+    "./nuxt": "./nuxt.mjs",
     ".": {
       "import": "./dist/blender-ui.js",
       "require": "./dist/blender-ui.umd.cjs"
-    }
+    },
+    "./*": "./*"
   },
   "main": "./dist/blender-ui.umd.cjs",
   "module": "./dist/blender-ui.js",

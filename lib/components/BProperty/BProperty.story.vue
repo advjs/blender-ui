@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import BSelectMenu from '../BSelectMenu/BSelectMenu.vue'
+import BProperty from './BProperty.vue'
+
 const curOption = ref('single')
 </script>
 
