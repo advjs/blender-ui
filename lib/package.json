@@ -1,7 +1,7 @@
 {
   "name": "@advjs/blender-ui",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2-beta.0",
   "packageManager": "pnpm@8.12.1",
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
   "module": "./dist/blender-ui.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build"
+    "build": "vue-tsc --noEmit && vite build",
+    "release": "bumpp && npm publish"
   },
   "devDependencies": {
     "@types/three": "^0.159.0",
