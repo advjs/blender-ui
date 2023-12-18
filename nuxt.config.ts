@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
   ],
   runtimeConfig: {
     public: {
@@ -11,7 +12,7 @@ export default defineNuxtConfig({
 
   components: [
     {
-      path: '~/lib/components',
+      path: '~/packages/blender-ui/components',
       pathPrefix: false,
     },
     {

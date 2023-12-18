@@ -1,0 +1,17 @@
+{
+  "name": "threejs",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/three": "^0.159.0",
+    "three": "^0.159.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

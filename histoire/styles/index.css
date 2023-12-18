@@ -1,0 +1,3 @@
+.__histoire-render-story:not(.__histoire-render-custom-controls) {
+  overflow: visible !important;
+}
