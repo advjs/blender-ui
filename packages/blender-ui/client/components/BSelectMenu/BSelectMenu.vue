@@ -131,6 +131,8 @@ const el = ref<HTMLElement | null>(null)
 .b-select {
   position: relative;
 
+  outline: none;
+
   .value {
     font:
       12px system-ui,
@@ -199,6 +201,8 @@ const el = ref<HTMLElement | null>(null)
     background: #181818;
     border: 1px solid #242424;
     border-radius: 4px;
+
+    outline: none !important;
 
     .up & {
       border-top-left-radius: 0;

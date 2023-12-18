@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "blender-ui": ["../packages/blender-ui/index.ts"]
+      "@advjs/blender-ui": ["../packages/blender-ui/index.ts"]
     }
   }
 }

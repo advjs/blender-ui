@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue'
+import { ref } from 'vue'
 import BCheckbox from '../BCheckbox/BCheckbox.vue'
 
 // You need to create this composable for the slide transition

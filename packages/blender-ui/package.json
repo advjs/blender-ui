@@ -9,21 +9,23 @@
   },
   "exports": {
     "./nuxt": "./nuxt.mjs",
+    "./*": "./*",
     ".": {
       "import": "./dist/blender-ui.js",
       "require": "./dist/blender-ui.umd.cjs"
-    },
-    "./*": "./*"
+    }
   },
   "main": "./dist/blender-ui.umd.cjs",
   "module": "./dist/blender-ui.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build && pnpm run build:icons",
+    "build:icons": "tsx scripts/build.ts",
     "release": "bumpp && npm publish"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "tsx": "^4.6.2",
     "vite": "^5.0.10"
   }
 }
