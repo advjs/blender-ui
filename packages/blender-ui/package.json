@@ -21,6 +21,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && pnpm run build:icons",
     "build:icons": "tsx scripts/build.ts",
+    "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
   "devDependencies": {
