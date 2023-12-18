@@ -1,6 +1,5 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { Buffer } from 'node:buffer'
 import { svg } from '../client/styles/icons'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)

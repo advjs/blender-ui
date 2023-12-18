@@ -1,6 +1,7 @@
-<script setup>
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import Toggle from './IconButton.vue'
+<script lang="ts" setup>
+import { onMounted, ref, watch } from 'vue'
+
+// import Toggle from './IconButton.vue'
 
 const props = defineProps({
   indent: Number,
@@ -58,7 +59,7 @@ function show() {
   emit('show')
 }
 
-function onKeyDown(event) {
+function onKeyDown(_event: KeyboardEvent) {
   // The keyboard navigation logic goes here
   // You'll need to handle focus and sibling element traversal in Vue 3 terms
 }
@@ -84,7 +85,8 @@ function onKeyDown(event) {
       <span class="toggle-spacer" />
     </template>
     <span class="title">{{ title }}</span>
-    <template v-if="selectable">
+    <!-- <template v-if="selectable"> -->
+    <template v-if="1">
       <Toggle
         icon="selectable"
         hint="Disable right-click selection"

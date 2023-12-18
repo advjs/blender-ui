@@ -1,6 +1,9 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "paths": {
+      "@advjs/blender-ui": ["./packages/blender-ui/index.ts"]
+    },
     "isolatedModules": false
   }
 }
