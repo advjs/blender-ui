@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "blender-ui": ["../packages/blender-ui/index.ts"]
+    }
+  }
+}

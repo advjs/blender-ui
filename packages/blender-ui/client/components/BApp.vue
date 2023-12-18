@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { bCssVars } from '../styles/icons'
 import { BNumberField, BPanel, BProperty, BSelectMenu } from './index'
 
@@ -21,11 +21,11 @@ defineProps<{
 const expanded = ref(true)
 const curOption = ref('xyz')
 
-const transformPanel = reactive({
-  x: 0,
-  y: 0,
-  z: 0,
-})
+// const transformPanel = reactive({
+//   x: 0,
+//   y: 0,
+//   z: 0,
+// })
 
 const modeOptions = [
   { label: 'XYZ Euler', value: 'xyz' },

@@ -36,6 +36,7 @@
     "@histoire/plugin-nuxt": "^0.17.7",
     "@histoire/plugin-vue": "^0.17.6",
     "@nuxtjs/tailwindcss": "^6.10.1",
+    "@types/node": "^20.10.5",
     "@vitejs/plugin-vue": "^4.5.2",
     "@vueuse/core": "^10.7.0",
     "@vueuse/nuxt": "^10.7.0",

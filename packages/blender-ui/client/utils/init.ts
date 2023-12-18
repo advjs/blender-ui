@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from '../components/BApp.vue'
 
-import pkg from '../package.json'
+import pkg from '../../package.json'
 
 /**
  * 控制台输出信息

@@ -1,6 +1,6 @@
 import './style.css'
 import { reactive } from 'vue'
-import { createBUI } from '../../../packages/blender-ui/utils'
+import { createBUI } from 'blender-ui'
 
 import { createDemoScene } from './scene'
 
