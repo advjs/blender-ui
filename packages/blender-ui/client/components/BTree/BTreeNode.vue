@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import Toggle from '../BIconButton/BIconButton.vue'
 import type { TreeNode } from './types'
@@ -14,11 +14,6 @@ withDefaults(defineProps<{
   visible: true,
 })
 
-// leaf: false,
-//     depth: 0,
-//     title: '',
-//     selectable: true,
-//     expanded: false,
 const emit = defineEmits([
   'log',
 
@@ -100,7 +95,7 @@ function onNodeActivated(node: TreeNode) {
       <template v-else>
         <span class="toggle-spacer" />
       </template>
-      <span class="title">{{ node.name }}</span>
+      <span class="title">{{ node.name || `[${node.type}]` }}</span>
     </div>
 
     <template v-if="node.selectable">

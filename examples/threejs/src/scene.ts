@@ -5,6 +5,7 @@ import * as THREE from 'three'
  */
 export function createDemoScene() {
   const scene = new THREE.Scene()
+  scene.name = 'Scene'
   // scene.background = new THREE.Color(0x000000)
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 
@@ -19,11 +20,13 @@ export function createDemoScene() {
   const geometry = new THREE.BoxGeometry(1, 1, 1)
   const material = new THREE.MeshBasicMaterial({ color: 0x303030 })
   const cube = new THREE.Mesh(geometry, material)
+  cube.name = 'Cube'
   scene.add(cube)
 
   const torusKnotGeometry = new THREE.TorusKnotGeometry(0.5, 0.1, 100, 16)
   const torusKnotMaterial = new THREE.MeshNormalMaterial()
   const torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial)
+  torusKnot.name = 'Torus Knot'
   scene.add(torusKnot)
   torusKnot.position.x = 2
 
@@ -31,9 +34,11 @@ export function createDemoScene() {
 
   // light
   const light = new THREE.AmbientLight(0xFF0000) // soft white light
+  light.name = 'Soft White Light'
   scene.add(light)
   // White directional light at half intensity shining from the top.
   const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5)
+  directionalLight.name = 'Directional Light'
   scene.add(directionalLight)
 
   function animate() {

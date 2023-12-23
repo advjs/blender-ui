@@ -1,21 +1,34 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { bCssVars } from '../styles/icons'
-import { BNumberField, BPanel, BProperty, BSelectMenu } from './index'
+import type { Trees } from './BTree/types'
+import { BNumberField, BPanel, BProperty, BSelectMenu, BTree } from './index'
+
+interface Panel {
+  title: string
+  type: '' | 'tree'
+}
+
+interface CommonPanel extends Panel {
+  type: ''
+  properties: {
+    object: Record<string, number>
+    property: string
+    type?: string
+    label: string
+    step?: number
+    onChange?: (val: number) => void
+  }[]
+}
+
+interface TreePanel extends Panel {
+  type: 'tree'
+  data: Trees
+}
 
 defineProps<{
   title?: string
-  panels?: {
-    title: string
-    properties: {
-      object: Record<string, number>
-      property: string
-      type?: string
-      label: string
-      step?: number
-      onChange?: (val: number) => void
-    }[]
-  }[]
+  panels?: (CommonPanel | TreePanel)[]
 }>()
 
 const expanded = ref(true)
@@ -45,27 +58,36 @@ const globalCSSVars = bCssVars()
       {{ title }}
     </h3> -->
     <template v-if="panels">
-      <BPanel v-for="panel in panels" :key="panel.title" :expanded="expanded" :title="panel.title">
-        <BProperty
-          v-for="property in panel.properties"
-          :key="property.label"
-          :label="property.label"
-        >
-          <BNumberField
-            v-if="property.object && typeof property.object[property.property] === 'number'"
-            v-model="property.object[property.property]"
-            :step="property.step"
-            @change="property.onChange"
-          />
-        </BProperty>
+      <template v-for="panel in panels" :key="panel.title">
+        <BPanel :expanded="expanded" :title="panel.title">
+          <template v-if="!panel.type">
+            <BProperty
+              v-for="property in panel.properties"
+              :key="property.label"
+              :label="property.label"
+            >
+              <BNumberField
+                v-if="property.object && typeof property.object[property.property] === 'number'"
+                v-model="property.object[property.property]"
+                :step="property.step"
+                @change="property.onChange"
+              />
+            </BProperty>
 
-        <BProperty label="Mode">
-          <BSelectMenu
-            v-model="curOption"
-            :options="modeOptions"
+            <BProperty label="Mode">
+              <BSelectMenu
+                v-model="curOption"
+                :options="modeOptions"
+              />
+            </BProperty>
+          </template>
+
+          <BTree
+            v-else-if="panel.type === 'tree'"
+            :data="panel.data"
           />
-        </BProperty>
-      </BPanel>
+        </BPanel>
+      </template>
     </template>
   </div>
 </template>

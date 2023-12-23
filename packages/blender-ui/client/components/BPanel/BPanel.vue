@@ -92,7 +92,7 @@ function afterLeave(el: Element) {
   background: #353535;
   border-radius: 4px;
 
-  .title {
+  > .title {
     display: flex;
     align-items: center;
 

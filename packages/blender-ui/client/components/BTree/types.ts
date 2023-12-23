@@ -5,6 +5,7 @@ export interface OutlinerNode {
 export interface TreeNode {
   id?: string
   name: string
+  type?: string
   /**
    * 是否展开
    */
