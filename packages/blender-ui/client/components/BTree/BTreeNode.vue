@@ -180,6 +180,7 @@ function onNodeActivated(node: TreeNode) {
     align-items: center;
 
     &.invisible {
+      visibility: visible;
       opacity: 0.5;
     }
   }
