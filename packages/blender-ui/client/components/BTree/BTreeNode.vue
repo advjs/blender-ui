@@ -76,6 +76,7 @@ function onNodeActivated(node: TreeNode) {
 
 <template>
   <div
+    v-if="node"
     ref="el"
     class="b-tree-node"
     :class="[{ active: node === currentNode, muted: node.muted, match: node.match }]"
@@ -86,7 +87,7 @@ function onNodeActivated(node: TreeNode) {
     @keydown="onKeyDown"
   >
     <div class="content" :class="{ invisible: node.visible === false || visible === false }">
-      <template v-if="node.children">
+      <template v-if="node.children && node.children.length > 0">
         <Toggle
           :icon="node.expanded ? 'expanded' : 'collapsed'"
           @click="node.expanded ? collapse([node]) : expand([node])"
