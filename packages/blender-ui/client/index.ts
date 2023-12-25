@@ -4,8 +4,11 @@ export * from './components'
 export * from './styles'
 export * from './utils'
 
-export default {
-  createBUI,
+if (typeof window !== 'undefined') {
+  // @ts-expect-error global
+  window.BUI = {
+    createBUI,
+  }
 }
 
 export { reactive, ref } from 'vue'

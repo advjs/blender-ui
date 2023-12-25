@@ -47,9 +47,36 @@ export interface PropertyOptions {
   onChange?: (val: number) => void
 }
 
-export function createBUI(selector: string | Element = 'advjs-blender-ui-container', props: any = {}) {
+export function createBUI({
+  selector = '#advjs-blender-ui-container',
+  props,
+}: {
+  selector?: string
+  props: {
+    panels: {
+      properties: PropertyOptions[]
+    }[]
+  }
+}) {
   const app = createApp(App, props)
+
+  // 如果传入的是字符串，且没有找到对应的元素，则创建一个
+  if (typeof selector === 'string' && !document.querySelector(selector)) {
+    const targetEl = document.createElement('div')
+    targetEl.id = 'advjs-blender-ui-container'
+    targetEl.style.position = 'fixed'
+    targetEl.style.top = '0'
+    targetEl.style.right = '0'
+    targetEl.style.zIndex = '9999'
+    targetEl.style.width = '300px'
+
+    document.body.appendChild(targetEl)
+
+    selector = `#${targetEl.id}`
+  }
+
   app.mount(selector)
+
   return {
     app,
 
