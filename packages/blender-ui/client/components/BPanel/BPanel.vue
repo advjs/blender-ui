@@ -114,8 +114,8 @@ function afterLeave(el: Element) {
     &:before {
       content: "";
       position: absolute;
-      top: 3px;
-      left: 3px;
+      top: 4px;
+      left: 4px;
       width: 16px;
       height: 16px;
       background: var(--b-icon-chevron-right) center center no-repeat;

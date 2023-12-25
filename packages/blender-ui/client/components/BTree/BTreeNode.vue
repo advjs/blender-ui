@@ -188,9 +188,15 @@ function onNodeActivated(node: TreeNode) {
   .title {
     flex: 1;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
     user-select: none;
     position: default;
+
+    width: 200px;
+
+    font-size: small;
+
     .muted & {
       opacity: 0.5;
     }

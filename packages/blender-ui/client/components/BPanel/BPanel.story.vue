@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import BProperty from '../BProperty/BProperty.vue'
+import BNumberField from '../BNumberField/BNumberField.vue'
+import BSelectMenu from '../BSelectMenu/BSelectMenu.vue'
 import BPanel from './BPanel.vue'
 
 const expanded = ref(true)

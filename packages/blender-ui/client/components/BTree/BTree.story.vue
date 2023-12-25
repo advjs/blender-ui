@@ -53,6 +53,10 @@ const treeData = ref<Trees>([
             name: 'Level three 3-1-1',
             selectable: true,
           },
+          {
+            name: 'Level three 3-1-2 Long Name Long Name Long Name Long Name Long Name Long Name',
+            selectable: true,
+          },
         ],
       },
       {
