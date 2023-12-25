@@ -6,9 +6,19 @@
 
 ## Usage
 
+### NPM
+
 ```bash
 # not published yet
 pnpm add @advjs/blender-ui
+```
+
+### CDN
+
+```html
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- <script src="https://unpkg.com/@advjs/blender-ui@0.0.2-beta.5/dist/blender-ui.umd.cjs"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/@advjs/blender-ui/dist/styles.css">
 ```
 
 ## Why?

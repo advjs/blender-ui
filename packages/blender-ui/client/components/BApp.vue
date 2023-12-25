@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { bCssVars } from '../styles/icons'
-import type { Trees } from './BTree/types'
+import type { TreeNode, Trees } from './BTree/types'
 import { BNumberField, BPanel, BProperty, BSelectMenu, BTree } from './index'
 
 interface Panel {
@@ -24,6 +24,13 @@ interface CommonPanel extends Panel {
 interface TreePanel extends Panel {
   type: 'tree'
   data: Trees
+  onNodeActivate?: (node: TreeNode) => void
+  onNodeCollapse?: (nodes: Trees) => void
+  onNodeExpand?: (nodes: Trees) => void
+  onNodeShow?: (nodes: Trees) => void
+  onNodeHide?: (nodes: Trees) => void
+  onNodeSelected?: (nodes: Trees) => void
+  onNodeUnselected?: (nodes: Trees) => void
 }
 
 defineProps<{
@@ -85,6 +92,14 @@ const globalCSSVars = bCssVars()
           <BTree
             v-else-if="panel.type === 'tree'"
             :data="panel.data"
+
+            @node-activate="panel.onNodeActivate"
+            @node-collapse="panel.onNodeCollapse"
+            @node-expand="panel.onNodeExpand"
+            @node-show="panel.onNodeShow"
+            @node-hide="panel.onNodeHide"
+            @node-selected="panel.onNodeSelected"
+            @node-unselected="panel.onNodeUnselected"
           />
         </BPanel>
       </template>

@@ -1,10 +1,10 @@
 import './style.css'
-import { reactive } from 'vue'
-import { createBUI } from '@advjs/blender-ui'
+import { createBUI, reactive } from '@advjs/blender-ui'
 import '@advjs/blender-ui/dist/style.css'
 
 // import * as THREE from 'three'
 
+import type { TreeNode } from '../../../packages/blender-ui/client/components/BTree/types'
 import { createDemoScene } from './scene'
 
 const { camera, scene } = createDemoScene()
@@ -21,6 +21,10 @@ const props = reactive({
     {
       type: 'tree',
       title: 'Tree',
+      onNodeExpand: (nodes: TreeNode[]) => {
+        // eslint-disable-next-line no-console
+        console.log(nodes)
+      },
       data: [
         {
           name: 'Level one 1',

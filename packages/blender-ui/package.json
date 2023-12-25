@@ -24,6 +24,9 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
+  "dependencies": {
+    "vue": "^3.3.13"
+  },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
     "tsx": "^4.7.0",

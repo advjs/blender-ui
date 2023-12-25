@@ -18,17 +18,18 @@ export default defineConfig({
       // the proper extensions will be added
       fileName: 'blender-ui',
     },
+
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['vue'],
-      output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: 'Vue',
-        },
-      },
+      // // make sure to externalize deps that shouldn't be bundled
+      // // into your library
+      // external: ['vue'],
+      // output: {
+      //   // Provide global variables to use in the UMD build
+      //   // for externalized deps
+      //   globals: {
+      //     vue: 'Vue',
+      //   },
+      // },
     },
   },
 })
