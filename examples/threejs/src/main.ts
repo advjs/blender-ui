@@ -1,6 +1,6 @@
 import './style.css'
+import type { BUIProps } from '@advjs/blender-ui'
 import { createBUI, reactive } from '@advjs/blender-ui'
-import '@advjs/blender-ui/dist/style.css'
 
 // import * as THREE from 'three'
 
@@ -9,15 +9,15 @@ import { createDemoScene } from './scene'
 
 const { camera, scene } = createDemoScene()
 
-const props = reactive({
+const props = reactive<BUIProps>({
   title: 'TEST',
 
   panels: [
     {
+      type: 'common',
       title: 'Transform',
       properties: [],
     },
-
     {
       type: 'tree',
       title: 'Tree',
@@ -98,6 +98,11 @@ const props = reactive({
   ],
 })
 
-export const bui = createBUI('#advjs-blender-ui-container', props)
-bui.add(camera.position, 'x').label('Location X')
-bui.addVector(camera.position).labels(['X', 'Y', 'Z'])
+export const bui = createBUI({
+  props,
+})
+
+const transformPanel = bui.getPanel('Transform')
+
+transformPanel.add(camera.position, 'x').label('Location X')
+// bui.addVector(camera.position).labels(['X', 'Y', 'Z'])

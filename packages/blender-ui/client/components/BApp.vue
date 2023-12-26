@@ -1,41 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { bCssVars } from '../styles/icons'
-import type { TreeNode, Trees } from './BTree/types'
+import type { BPanelProps, CommonPanel, TreePanel } from '../../types'
 import { BNumberField, BPanel, BProperty, BSelectMenu, BTree } from './index'
-
-interface Panel {
-  title: string
-  type: '' | 'tree'
-}
-
-interface CommonPanel extends Panel {
-  type: ''
-  properties: {
-    object: Record<string, number>
-    property: string
-    type?: string
-    label: string
-    step?: number
-    onChange?: (val: number) => void
-  }[]
-}
-
-interface TreePanel extends Panel {
-  type: 'tree'
-  data: Trees
-  onNodeActivate?: (node: TreeNode) => void
-  onNodeCollapse?: (nodes: Trees) => void
-  onNodeExpand?: (nodes: Trees) => void
-  onNodeShow?: (nodes: Trees) => void
-  onNodeHide?: (nodes: Trees) => void
-  onNodeSelected?: (nodes: Trees) => void
-  onNodeUnselected?: (nodes: Trees) => void
-}
 
 defineProps<{
   title?: string
-  panels?: (CommonPanel | TreePanel)[]
+  panels?: BPanelProps[]
 }>()
 
 const expanded = ref(true)
@@ -67,7 +38,7 @@ const globalCSSVars = bCssVars()
     <template v-if="panels">
       <template v-for="panel in panels" :key="panel.title">
         <BPanel :expanded="expanded" :title="panel.title">
-          <template v-if="!panel.type">
+          <template v-if="!panel.type || panel.type === 'common'">
             <BProperty
               v-for="property in panel.properties"
               :key="property.label"

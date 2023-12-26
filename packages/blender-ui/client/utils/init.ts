@@ -3,6 +3,8 @@ import App from '../components/BApp.vue'
 
 import pkg from '../../package.json'
 
+import type { BUIProps, PropertyOptions } from '../../types'
+
 /**
  * 控制台输出信息
  * @param name 名称
@@ -36,27 +38,12 @@ export function init(selector = 'advjs-blender-ui-container') {
   return app
 }
 
-export interface PropertyOptions {
-  object: object
-  property: number | string | symbol
-  label?: string
-  type: string
-  min?: number
-  max?: number
-  step?: number
-  onChange?: (val: number) => void
-}
-
 export function createBUI({
   selector = '#advjs-blender-ui-container',
   props,
 }: {
   selector?: string
-  props: {
-    panels: {
-      properties: PropertyOptions[]
-    }[]
-  }
+  props: BUIProps
 }) {
   const app = createApp(App, props)
 
@@ -69,6 +56,8 @@ export function createBUI({
     targetEl.style.right = '0'
     targetEl.style.zIndex = '9999'
     targetEl.style.width = '300px'
+    targetEl.style.maxHeight = '100vh'
+    targetEl.style.overflow = 'auto'
 
     document.body.appendChild(targetEl)
 
@@ -80,30 +69,41 @@ export function createBUI({
   return {
     app,
 
-    add<K extends string | number | symbol>(obj: Record<K, number | string | object>, property: K, min?: number, max?: number, step?: number) {
-      const propertyOptions: PropertyOptions = {
-        object: obj,
-        property,
-        label: property.toString(),
-        type: typeof obj[property],
-        min,
-        max,
-        step,
-        // onChange: (val: number) => {
-        //   obj[property] = val
-        // },
-      }
-      props.panels[0].properties.push(propertyOptions)
+    getPanel(name: string) {
+      const panel = props.panels.find(panel => panel.title === name)
 
-      function label(text: string) {
-        propertyOptions.label = text
-      }
+      if (!panel)
+        throw new Error(`Panel "${name}" not found`)
+
       return {
-        /**
-         * alias of name
-         */
-        label,
-        name: label,
+        add<K extends string | number | symbol>(obj: Record<K, number | string | object>, property: K, min?: number, max?: number, step?: number) {
+          const propertyOptions: PropertyOptions = {
+            object: obj,
+            property,
+            label: property.toString(),
+            type: typeof obj[property],
+            min,
+            max,
+            step,
+            // onChange: (val: number) => {
+            //   obj[property] = val
+            // },
+          }
+
+          if (!panel.type)
+            panel.properties.push(propertyOptions)
+
+          function label(text: string) {
+            propertyOptions.label = text
+          }
+          return {
+            /**
+             * alias of name
+             */
+            label,
+            name: label,
+          }
+        },
       }
     },
 

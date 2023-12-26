@@ -193,7 +193,7 @@ function onNodeActivated(node: TreeNode) {
     user-select: none;
     position: default;
 
-    width: 200px;
+    width: 0px;
 
     font-size: small;
 
