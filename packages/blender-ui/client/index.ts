@@ -1,3 +1,4 @@
+import { reactive, ref } from 'vue'
 import { createBUI } from './utils'
 
 export * from './components'
@@ -8,6 +9,8 @@ if (typeof window !== 'undefined') {
   // @ts-expect-error global
   window.BUI = {
     createBUI,
+    reactive,
+    ref,
   }
 }
 

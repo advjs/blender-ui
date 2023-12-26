@@ -10,7 +10,7 @@ export interface TreeNode {
    * 是否展开
    */
   expanded?: boolean
-  // active?: boolean
+  active?: boolean
   selectable?: boolean
   visible?: boolean
   match?: boolean

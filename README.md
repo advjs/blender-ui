@@ -13,12 +13,32 @@
 pnpm add @advjs/blender-ui
 ```
 
+```ts
+import { createBUI, reactive } from '@advjs/blender-ui'
+
+const props = reactive({
+  // ...
+})
+
+createBUI({
+  props
+})
+```
+
 ### CDN
 
 ```html
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<!-- <script src="https://unpkg.com/@advjs/blender-ui@0.0.2-beta.5/dist/blender-ui.umd.cjs"></script> -->
-<link rel="stylesheet" href="https://unpkg.com/@advjs/blender-ui/dist/styles.css">
+<script src="https://unpkg.com/@advjs/blender-ui@0.0.2-beta.5/dist/blender-ui.umd.cjs"></script>
+<script>
+const { createBUI, reactive } = window.BUI;
+const props = reactive({
+  // ...
+});
+
+createBUI({
+  props
+});
+</script>
 ```
 
 ## Why?

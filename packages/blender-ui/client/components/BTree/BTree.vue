@@ -72,6 +72,7 @@ function hide(nodes: Trees) {
 
 function activate(node: TreeNode) {
   currentNode.value = node
+  node.active = true
   emit('node-activate', node)
 }
 </script>
