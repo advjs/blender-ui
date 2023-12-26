@@ -93,6 +93,7 @@ const props = reactive<BUIProps>({
     {
       title: 'Hierarchy',
       type: 'tree',
+      // @ts-expect-error scene mount
       data: scene,
     },
   ],

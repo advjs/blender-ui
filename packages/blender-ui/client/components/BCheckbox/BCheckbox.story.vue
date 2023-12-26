@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import BCheckbox from './BCheckbox.vue'
 
 const value = ref(false)

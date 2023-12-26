@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { bCssVars } from '../styles/icons'
-import type { BPanelProps, CommonPanel, TreePanel } from '../../types'
+import type { BPanelProps } from '../../types'
 import { BNumberField, BPanel, BProperty, BSelectMenu, BTree } from './index'
 
 defineProps<{

@@ -76,7 +76,7 @@ export function createBUI({
         throw new Error(`Panel "${name}" not found`)
 
       return {
-        add<K extends string | number | symbol>(obj: Record<K, number | string | object>, property: K, min?: number, max?: number, step?: number) {
+        add<K extends string>(obj: Record<K, number>, property: K, min?: number, max?: number, step?: number) {
           const propertyOptions: PropertyOptions = {
             object: obj,
             property,
@@ -90,7 +90,7 @@ export function createBUI({
             // },
           }
 
-          if (!panel.type)
+          if (panel.type === 'common')
             panel.properties.push(propertyOptions)
 
           function label(text: string) {
@@ -104,30 +104,30 @@ export function createBUI({
             name: label,
           }
         },
-      }
-    },
 
-    addVector(obj: {
-      x: number
-      y: number
-      z: number
-    }) {
-      const x = this.add(obj, 'x')
-      const y = this.add(obj, 'y')
-      const z = this.add(obj, 'z')
+        addVector(obj: {
+          x: number
+          y: number
+          z: number
+        }) {
+          const x = this.add(obj, 'x')
+          const y = this.add(obj, 'y')
+          const z = this.add(obj, 'z')
 
-      function labels(arr: string[]) {
-        x.label(arr[0])
-        y.label(arr[1])
-        z.label(arr[2])
-      }
+          function labels(arr: string[]) {
+            x.label(arr[0])
+            y.label(arr[1])
+            z.label(arr[2])
+          }
 
-      return {
-        /**
-         * alias of names
-         */
-        labels,
-        names: labels,
+          return {
+            /**
+             * alias of names
+             */
+            labels,
+            names: labels,
+          }
+        },
       }
     },
   }
