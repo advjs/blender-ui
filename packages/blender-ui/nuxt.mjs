@@ -6,7 +6,8 @@ export default defineNuxtModule({
       const { resolve } = createResolver(import.meta.url)
       // Add ./components dir to the list
       dirs.push({
-        path: resolve('./src/components'),
+        path: resolve('./client/components'),
+        pattern: '**/*.vue',
         prefix: '',
       })
     },

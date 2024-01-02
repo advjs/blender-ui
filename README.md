@@ -4,6 +4,8 @@
 
 **Work in progress...**
 
+Blender UI is an intermediate state for [@advjs/gui](https://github.com/YunYouJun/advjs/tree/main/packages/gui).
+
 ## Usage
 
 ### NPM

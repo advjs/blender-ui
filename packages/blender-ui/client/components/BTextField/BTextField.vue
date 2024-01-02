@@ -10,14 +10,14 @@ const emit = defineEmits(['input', 'change', 'update:modelValue'])
 
 const text = ref(props.modelValue)
 const previous = ref(props.modelValue)
-const multiline = ref(text.value.includes('\n'))
+const multiline = ref(text.value?.includes('\n'))
 
 const el = ref<HTMLTextAreaElement | HTMLInputElement>()
 watch(() => props.modelValue, (newValue) => {
   if (newValue !== text.value && document.activeElement !== el.value)
     text.value = newValue
 
-  multiline.value = text.value.includes('\n')
+  multiline.value = text.value?.includes('\n')
 })
 
 function onInput() {
@@ -35,7 +35,7 @@ function onBlur() {
   if (previous.value !== text.value)
     emit('change', text.value)
 
-  if (el.value?.tagName === 'TEXTAREA' && !text.value.includes('\n'))
+  if (el.value?.tagName === 'TEXTAREA' && !text.value?.includes('\n'))
     multiline.value = false
 }
 

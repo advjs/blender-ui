@@ -6,7 +6,7 @@ import Option from './BSelectOption.vue'
 type OptionType = string | { value: string, label?: string, icon?: string }
 
 const props = defineProps<{
-  modelValue: string
+  modelValue?: string
   options: OptionType[]
   legend?: string
 }>()
